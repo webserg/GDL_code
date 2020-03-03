@@ -1,4 +1,4 @@
-
+import pydot
 from keras.layers import Input, Conv2D, Flatten, Dense, Conv2DTranspose, Reshape, Lambda, Activation, BatchNormalization, LeakyReLU, Dropout
 from keras.models import Model
 from keras import backend as K
@@ -181,6 +181,10 @@ class Autoencoder():
         )
 
     def plot_model(self, run_folder):
+        print(os.path.join(run_folder ,'viz/model.png'))
+        print(os.path.abspath(os.getcwd()))
+        print(os.path.isdir(os.path.join(run_folder ,'viz')))
+        print(os.environ['PATH'])
         plot_model(self.model, to_file=os.path.join(run_folder ,'viz/model.png'), show_shapes = True, show_layer_names = True)
         plot_model(self.encoder, to_file=os.path.join(run_folder ,'viz/encoder.png'), show_shapes = True, show_layer_names = True)
         plot_model(self.decoder, to_file=os.path.join(run_folder ,'viz/decoder.png'), show_shapes = True, show_layer_names = True)
